@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <form action="https://ccore.spgateway.com/MPG/mpg_gateway" method="post">
+    <input type="text" name="MerchantID" value="MS13095118">
+    <input type="hidden" name="TradeSha" value="">
+    <input type="hidden" name="TradeInfo" value="">
+    <input type="text" name="TimeStamp" value="1656384620">
+    <input type="text" name="Version" value="1.5">
+    <input type="text" name="MerchantOrderNo" value="1656384620">
+    <input type="text" name="Amt" value="80">
+    <input type="email" name="Email" value="jason850629@gmail.com">
+    <button type="submit">送出</button>
+  </form>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <form @submit.prevent="createOrder">
+        <div>
+          email
+          <input type="email" v-model="order.Email"/>
+        </div>
+        <div>
+          Amt
+          <input type="number" v-model.number="order.Amt"/>
+        </div>
+        <div>
+          ItemDesc
+          <input type="text" v-model="order.ItemDesc"/> 
+        </div>
+        <button type="submit">送出</button>
+      </form>
+    </div>
+    <script type="module">
+      import { createApp } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.37/vue.esm-browser.min.js';
+
+      const host = '<%= Host %>' || 'http://localhost:3000/';
+      const app = {
+        data() {
+          return {
+            order: {
+              Email: 'jason666@gmail.com',
+              Amt: 1000,
+              ItemDesc: '拾光堂商品'
+            }
+          }
+        },
+        methods: {
+          async createOrder() {
+            const url = `${host}createOrder`;
+            console.log('發送請求的訂單資料:', this.order);
+            const res = await axios.post(url, this.order);
+            console.log('後端回傳的結果:', res.data);
+            //window.location.href = `${host}check/?order=${res.data.TimeStamp}`;
+            window.location.href = `/check/?order=${res.data.TimeStamp}`; //轉址
+          }
+        }
+      }
+
+      createApp(app).mount('#app')
+    </script>
+    
+  </body>
+</html>
