@@ -114,8 +114,8 @@ function genDataChain(order) {
   return (
     `MerchantID=${MerchantID}&RespondType=${RespondType}&TimeStamp=${order.TimeStamp}` +
     `&Version=${Version}&MerchantOrderNo=${order.MerchantOrderNo}&Amt=${order.Amt}` +
-    `&NotifyURL=${encodeURIComponent(NotifyUrl)}` +
-    `&ReturnURL=${encodeURIComponent(ReturnUrl)}` +
+    //`&NotifyURL=${encodeURIComponent(NotifyUrl)}` +
+    //`&ReturnURL=${encodeURIComponent(ReturnUrl)}` +
     `&ItemDesc=${encodeURIComponent(order.ItemDesc)}&Email=${encodeURIComponent(
       order.Email
     )}`
