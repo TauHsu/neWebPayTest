@@ -23,8 +23,6 @@ router.post("/createOrder", (req, res) => {
     TimeStamp,
     Amt: parseInt(data.Amt),
     MerchantOrderNo: TimeStamp,
-    ReturnURL: ReturnUrl,
-    NotifyURL: NotifyUrl,
   };
 
   //console.log("createOrder:", TimeStamp, orders);
@@ -148,8 +146,6 @@ function genDataChain(order) {
   return (
     `MerchantID=${MerchantID}&RespondType=${RespondType}&TimeStamp=${order.TimeStamp}` +
     `&Version=${Version}&MerchantOrderNo=${order.MerchantOrderNo}&Amt=${order.Amt}` +
-    `&NotifyURL=${encodeURIComponent(NotifyUrl)}` +
-    `&ReturnURL=${encodeURIComponent(ReturnUrl)}` +
     `&ItemDesc=${encodeURIComponent(order.ItemDesc)}&Email=${encodeURIComponent(
       order.Email
     )}`
