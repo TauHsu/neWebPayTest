@@ -44,7 +44,7 @@
             const res = await axios.post(url, this.order);
             console.log("後端回傳的結果:", res.data);
             //window.location.href = `${host}check/?order=${res.data.TimeStamp}`;
-            window.location.href = `/check/?order=${res.data.TimeStamp}`; //轉址
+            window.location.href = `${host}check/?order=${res.data.TimeStamp}`; //轉址
           },
         },
       };
