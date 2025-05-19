@@ -23,6 +23,8 @@ router.post("/createOrder", (req, res) => {
     TimeStamp,
     Amt: parseInt(data.Amt),
     MerchantOrderNo: TimeStamp,
+    ReturnURL: ReturnUrl,
+    NotifyURL: NotifyUrl,
   };
 
   //console.log("createOrder:", TimeStamp, orders);
@@ -37,12 +39,12 @@ router.get("/check", function (req, res, next) {
 router.get("/order/:id", (req, res) => {
   const { id } = req.params;
   const order = orders[id];
-  //console.log(order);
+  console.log(order);
 
   const aesEncrypt = create_mpg_aes_encrypt(order);
-  //console.log("aesEncrypt", aesEncrypt); //交易資料
+  console.log("aesEncrypt", aesEncrypt); //交易資料
   const shaEncrypt = create_mpg_sha_encrypt(aesEncrypt);
-  //console.log("shaEncrypt", shaEncrypt); //驗證用
+  console.log("shaEncrypt", shaEncrypt); //驗證用
 
   res.status(200).json({
     status: true,
@@ -146,6 +148,8 @@ function genDataChain(order) {
   return (
     `MerchantID=${MerchantID}&RespondType=${RespondType}&TimeStamp=${order.TimeStamp}` +
     `&Version=${Version}&MerchantOrderNo=${order.MerchantOrderNo}&Amt=${order.Amt}` +
+    `&NotifyURL=${encodeURIComponent(NotifyUrl)}` +
+    `&ReturnURL=${encodeURIComponent(ReturnUrl)}` +
     `&ItemDesc=${encodeURIComponent(order.ItemDesc)}&Email=${encodeURIComponent(
       order.Email
     )}`
