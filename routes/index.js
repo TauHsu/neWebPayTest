@@ -49,7 +49,6 @@ router.get("/order/:id", (req, res) => {
   res.status(200).json({
     status: true,
     data: {
-      id,
       Email: order.Email,
       Amt: order.Amt,
       ItemDesc: order.ItemDesc,
