@@ -9,7 +9,7 @@
     <div id="app">
       <form @submit.prevent="createOrder">
         <div>
-          email
+          Email
           <input type="email" v-model="order.Email" />
         </div>
         <div>
@@ -26,14 +26,14 @@
     <script type="module">
       import { createApp } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.37/vue.esm-browser.min.js";
 
-      const host = "<%= Host %>" || "http://https://newebpaytest.onrender.com/";
+      const host = "<%= Host %>" || "https://newebpaytest.onrender.com/";
       const app = {
         data() {
           return {
             order: {
-              Email: "jason666@gmail.com",
-              Amt: 1000,
-              ItemDesc: "拾光堂商品",
+              Email: "jk7899test@gmail.com",
+              Amt: 50759,
+              ItemDesc: "測試-Compact Camera...等，共2項商品",
             },
           };
         },
